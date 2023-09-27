@@ -1,8 +1,10 @@
 rule detect_synapse_token : tokens
 {
     meta:
-        Author = "MTRNord"
-        Description = "This detects synapse access tokens. The synapse tokens all start with 'syt_'"
+        sharing = "TLP:CLEAR"
+        author = "MTRNord"
+        reference = "https://github.com/matrix-org/synapse/blob/11c6cc1115f43bf7bf1f8b99163ec3cdfa5003d9/synapse/handlers/auth.py#L1446-L1447"
+        description = "This detects synapse access tokens. The synapse tokens all start with 'syt_'"
         Action = "RedactAndNotify"
         NotifcationText = "Matrix access token detected. Please remove it before sending your message again."
     strings:
@@ -15,8 +17,10 @@ rule detect_synapse_token : tokens
 rule detect_github_token : tokens
 {
     meta:
-        Author = "MTRNord"
-        Description = "This detects github access tokens. See https://github.blog/2021-04-05-behind-githubs-new-authentication-token-formats/"
+        sharing = "TLP:CLEAR"
+        author = "MTRNord"
+        reference = "https://github.blog/2021-04-05-behind-githubs-new-authentication-token-formats/"
+        description = "This detects github access tokens. See https://github.blog/2021-04-05-behind-githubs-new-authentication-token-formats/"
         Action = "RedactAndNotify"
         NotifcationText = "Github access token detected. Please remove it before sending your message again. If this is a falsepositive make sure to include `tokenbypass1CwRlV5VtQdDPh`"
     strings:
