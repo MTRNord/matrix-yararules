@@ -5,7 +5,7 @@ rule TestRule : test_rule
         Description = "Test Rule"
         Action = "Notify"
     strings:
-        $test_string = "Test"
+        $test_string = "Test"  ascii nocase
 
     condition:
         $test_string
