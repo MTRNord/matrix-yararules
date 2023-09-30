@@ -4,7 +4,7 @@ rule detect_synapse_token : tokens
         sharing = "TLP:CLEAR"
         author = "MTRNord"
         reference = "https://github.com/matrix-org/synapse/blob/11c6cc1115f43bf7bf1f8b99163ec3cdfa5003d9/synapse/handlers/auth.py#L1446-L1447"
-        hash = " 825de8cbbd5cbdfd6efbff9038b3e2fbd1fc9fe6a6f73b50ee98dfead52bc3c6 "
+        hash = "825de8cbbd5cbdfd6efbff9038b3e2fbd1fc9fe6a6f73b50ee98dfead52bc3c6"
         description = "This detects synapse access tokens. The synapse tokens all start with 'syt_'"
         Action = "RedactAndNotify"
         NotifcationText = "Matrix access token detected. Please remove and revoke(!) it before sending your message again."
@@ -22,7 +22,7 @@ rule detect_github_token : tokens
         author = "MTRNord"
         reference = "https://github.blog/2021-04-05-behind-githubs-new-authentication-token-formats/"
         description = "This detects github access tokens. See https://github.blog/2021-04-05-behind-githubs-new-authentication-token-formats/"
-        hash = " 825de8cbbd5cbdfd6efbff9038b3e2fbd1fc9fe6a6f73b50ee98dfead52bc3c6 "
+        hash = "baa9e39c5ae9c01bd248d92c6e63f6299d3ca37fc9f977bf92ecd927354fe84c"
         Action = "RedactAndNotify"
         NotifcationText = "Github access token detected. Please remove and revoke(!) it before sending your message again. If this is a falsepositive make sure to include `tokenbypass1CwRlV5VtQdDPh`"
     strings:
