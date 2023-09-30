@@ -36,3 +36,19 @@ rule detect_github_token : tokens
     condition:
         ($personal_access_token or $oauth_access_token or $user_to_server_token or $server_to_server_token or $refresh_token) and not $bypass
 }
+
+rule detect_npm_token : tokens
+{
+    meta:
+        sharing = "TLP:CLEAR"
+        author = "MTRNord"
+        description = "This detects npm access tokens."
+        Action = "RedactAndNotify"
+        NotifcationText = "NPM access token detected. Please remove and revoke(!) it before sending your message again. If this is a falsepositive make sure to include `tokenbypass1CwRlV5VtQdDPh`"
+    strings:
+        $access_token = /npm_[A-Za-z0-9_]{1,255}/ ascii fullword
+        $bypass = "tokenbypass1CwRlV5VtQdDPh" ascii fullword
+
+    condition:
+        $access_token and not $bypass
+}
