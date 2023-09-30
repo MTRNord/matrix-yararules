@@ -26,11 +26,11 @@ rule detect_github_token : tokens
         Action = "RedactAndNotify"
         NotifcationText = "Github access token detected. Please remove and revoke(!) it before sending your message again. If this is a falsepositive make sure to include `tokenbypass1CwRlV5VtQdDPh`"
     strings:
-        $personal_access_token = "ghp_" ascii fullword
-        $oauth_access_token = "gho_" ascii fullword
-        $user_to_server_token = "ghu_" ascii fullword
-        $server_to_server_token = "ghs_" ascii fullword
-        $refresh_token = "ghr_" ascii fullword
+        $personal_access_token = /ghp_.{1,255}/ ascii fullword
+        $oauth_access_token = /gho_.{1,255}/ ascii fullword
+        $user_to_server_token = /ghu_.{1,255}/ ascii fullword
+        $server_to_server_token = /ghs_.{1,255}/ ascii fullword
+        $refresh_token = /ghr_.{1,255}/ ascii fullword
         $bypass = "tokenbypass1CwRlV5VtQdDPh" ascii fullword
 
     condition:
