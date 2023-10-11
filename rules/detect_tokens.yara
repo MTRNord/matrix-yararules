@@ -10,9 +10,10 @@ rule detect_synapse_token : tokens
         NotifcationText = "Matrix access token detected. Please remove and revoke(!) it before sending your message again."
     strings:
         $synapse_pattern = /syt_.{1,340}_.{20}_.{6}/ ascii
+        $synapse_refrech_token = /syr_.{1,340}_.{20}_.{6}/ ascii
 
     condition:
-        $synapse_pattern
+        $synapse_pattern or $synapse_refrech_token
 }
 
 rule detect_github_token : tokens
