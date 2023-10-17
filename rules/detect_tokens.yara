@@ -27,11 +27,11 @@ rule detect_github_token : tokens
         Action = "RedactAndNotify"
         NotifcationText = "Github access token detected. Please remove and revoke(!) it before sending your message again. If this is a falsepositive make sure to include `tokenbypass1CwRlV5VtQdDPh`"
     strings:
-        $personal_access_token = /ghp_[A-Za-z0-9_]{1,255}/ ascii fullword
-        $oauth_access_token = /gho_[A-Za-z0-9_]{1,255}/ ascii fullword
-        $user_to_server_token = /ghu_[A-Za-z0-9_]{1,255}/ ascii fullword
-        $server_to_server_token = /ghs_[A-Za-z0-9_]{1,255}/ ascii fullword
-        $refresh_token = /ghr_[A-Za-z0-9_]{1,255}/ ascii fullword
+        $personal_access_token = /ghp_[A-Za-z0-9]{1,255}/ ascii fullword
+        $oauth_access_token = /gho_[A-Za-z0-9]{1,255}/ ascii fullword
+        $user_to_server_token = /ghu_[A-Za-z0-9]{1,255}/ ascii fullword
+        $server_to_server_token = /ghs_[A-Za-z0-9]{1,255}/ ascii fullword
+        $refresh_token = /ghr_[A-Za-z0-9]{1,255}/ ascii fullword
         $bypass = "tokenbypass1CwRlV5VtQdDPh" ascii fullword
 
     condition:
@@ -47,7 +47,7 @@ rule detect_npm_token : tokens
         Action = "RedactAndNotify"
         NotifcationText = "NPM access token detected. Please remove and revoke(!) it before sending your message again. If this is a falsepositive make sure to include `tokenbypass1CwRlV5VtQdDPh`"
     strings:
-        $access_token = /npm_[A-Za-z0-9_]{1,255}/ ascii fullword
+        $access_token = /npm_[A-Za-z0-9]{1,255}/ ascii fullword
         $bypass = "tokenbypass1CwRlV5VtQdDPh" ascii fullword
 
     condition:
