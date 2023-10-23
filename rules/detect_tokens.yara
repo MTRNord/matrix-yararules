@@ -49,7 +49,7 @@ rule detect_npm_token : tokens
     strings:
         $access_token = /npm_[A-Za-z0-9]{1,255}/ ascii fullword
         $bypass = "tokenbypass1CwRlV5VtQdDPh" ascii fullword
-
+        $underscore = "_" ascii	       
     condition:
-        $access_token and not $bypass
+        ($access_token and #underscore == 1) and not $bypass
 }
